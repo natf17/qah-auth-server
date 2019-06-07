@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import com.nimbusds.jose.Payload;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.qah.kiosk.auth.server.security.KioskUser;
 import com.qah.kiosk.auth.server.security.TokenProperties;
@@ -27,6 +28,10 @@ public class JwtClaimsFacade {
 		processAuthorities(claimsSetBuilder, user);
 		
 		return claimsSetBuilder.build();
+	}
+	
+	public Payload getPayloadFromClaims(JWTClaimsSet claims){
+		return new Payload(claims.toJSONObject());
 	}
 	
 	protected void processSubject(JWTClaimsSet.Builder builder, KioskUser user) {

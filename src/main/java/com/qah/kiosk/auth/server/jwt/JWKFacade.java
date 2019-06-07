@@ -18,6 +18,7 @@ import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.JWSObject;
 import com.nimbusds.jose.JWSSigner;
+import com.nimbusds.jose.Payload;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.KeyUse;
@@ -41,6 +42,11 @@ public class JWKFacade {
 				.build();
 		return header;
 	}
+	
+	public JWSObject getJWSFromHeaderAndPayload(JWSHeader header, Payload payload) {
+		return new JWSObject(header, payload);
+	}
+	
 	
 	public JWK getJWK() throws Exception {
 		PrivateKey priv = getPrivateKey();
