@@ -35,7 +35,7 @@ public class TokenProperties {
 	
 	
 	public static class Expiration {
-		int days = 1;
+		int days;
 		int hours;
 		int minutes;
 		int seconds;
