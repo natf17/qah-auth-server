@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.qah.kiosk.auth.server.service.QahTokenService;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +22,7 @@ public class TokenController {
 		this.tokenService = tokenService;
 	}
 
-	@RequestMapping(path = "/", method = GET)
+	@RequestMapping(path = "/token", method = POST)
 	public ResponseEntity<String> getToken(Authentication auth) {
 		String token = tokenService.getBearerHeaderValueFor(auth);
 		
@@ -32,4 +32,5 @@ public class TokenController {
 		
 		return new ResponseEntity<>(headers, HttpStatus.ACCEPTED);
 	}
+	
 }
