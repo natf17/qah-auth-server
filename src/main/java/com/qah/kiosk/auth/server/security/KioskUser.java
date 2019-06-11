@@ -12,6 +12,8 @@ public class KioskUser extends User{
 	 */
 	private static final long serialVersionUID = -8567954083001898423L;
 
+	private String firstName;
+	private String lastName;
 
 	
 	public KioskUser(String username, String password, boolean enabled, boolean accountNonExpired,
@@ -24,9 +26,24 @@ public class KioskUser extends User{
 		super(username, password, authorities);
 	}
 	
-	public String getName() {
-		return "Nathan";
+	
+	public KioskUser(String username, String password, boolean enabled, boolean accountNonExpired,
+			boolean credentialsNonExpired, boolean accountNonLocked,
+			Collection<? extends GrantedAuthority> authorities, String firstName, String lastName) {
+		this(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		this.firstName = firstName;
+		this.lastName = lastName;
+
 	}
+	public String getFirstName() {
+		return this.firstName;
+	}
+	
+	
+	public String getLastName() {
+		return this.lastName;
+	}
+
 
 
 }

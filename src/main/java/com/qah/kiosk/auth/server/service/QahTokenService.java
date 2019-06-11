@@ -3,6 +3,7 @@ package com.qah.kiosk.auth.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 
 import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.JWSObject;
@@ -13,6 +14,7 @@ import com.qah.kiosk.auth.server.jwt.JwtClaimsFacade;
 import com.qah.kiosk.auth.server.security.KioskUser;
 import com.qah.kiosk.auth.server.security.TokenProperties;
 
+@Service
 public class QahTokenService {
 	
 	private TokenProperties properties;
