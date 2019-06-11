@@ -63,6 +63,17 @@ public class QahTokenService {
 
 	}
 	
+	public String getJwkSet() {
+		String jwkSet = null;
+		try {
+			jwkSet = this.jwkFacade.getJWK().toPublicJWK().toString();
+		} catch(Exception ex) {
+			throw new RuntimeException("Error creating JWKSet");
+		}
+		
+		return "{\"keys\":[" + jwkSet + "]}";
+	}
+	
 	
 	
 
