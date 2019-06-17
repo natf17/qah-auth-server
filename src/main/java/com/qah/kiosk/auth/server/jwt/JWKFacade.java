@@ -9,7 +9,6 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
@@ -29,6 +28,7 @@ public class JWKFacade {
 	
 	private PrivateKey privateKey;
 	private PublicKey publicKey;
+	private String kid = "qah-auth-server-current-keyv1";
 	
 	public void sign(JWSObject jwsObject) throws Exception {
 		JWSSigner signer = new RSASSASigner((RSAPrivateKey)getPrivateKey());
@@ -55,7 +55,7 @@ public class JWKFacade {
 		JWK jwk = new RSAKey.Builder((RSAPublicKey)pub)
 			    .privateKey((RSAPrivateKey)priv)
 			    .keyUse(KeyUse.SIGNATURE)
-			    .keyID(UUID.randomUUID().toString())
+			    .keyID(kid)
 			    .build();
 		
 		return jwk;

@@ -4,7 +4,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpHeaders;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,6 +27,9 @@ public class TokenControllerTest {
 	
 	@MockBean
 	private QahTokenService tokenService;
+	
+	@MockBean
+	JdbcTemplate jdbc;
 	
 	@Autowired
 	private MockMvc mockMvc;
@@ -42,9 +45,7 @@ public class TokenControllerTest {
 	public void whenAuthenticated_tokenEndpoint_returnsToken() throws Exception {
 			mockMvc.perform(post("/token").with(csrf()))
 						.andExpect(status().isAccepted())
-						.andExpect(header()
-								.string(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-								);
+						.andExpect(content().string("{\"token\":\"" + token + "\"}"));
 	}
 	
 }

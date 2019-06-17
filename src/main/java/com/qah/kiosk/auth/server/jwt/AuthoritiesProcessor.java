@@ -8,12 +8,13 @@ import com.nimbusds.jwt.JWTClaimsSet.Builder;
 import com.qah.kiosk.auth.server.security.KioskUser;
 
 public class AuthoritiesProcessor implements JwtClaimProcessor{
-	public final static String AUTHORITIES_CLAIM_NAME = "scopes";
+	public final static String AUTHORITIES_CLAIM_NAME = "scope";
 
 
 	@Override
 	public Builder process(Builder builder, KioskUser user) {
 		Collection<GrantedAuthority> authorities = user.getAuthorities();
+		System.out.println("AUTHORITIES: " + authorities);
 		
 		if(authorities == null) {
 			return builder;
@@ -32,7 +33,9 @@ public class AuthoritiesProcessor implements JwtClaimProcessor{
 		
 		String scopes = sb.toString().trim();
 		
-		builder.claim(AUTHORITIES_CLAIM_NAME, scopes);		return null;
+		builder.claim(AUTHORITIES_CLAIM_NAME, scopes);	
+		
+		return builder;
 	}
 	
 

@@ -37,7 +37,7 @@ public class AuthoritiesProcessorTest {
 		
 		verify(mockBuilder).claim(claimKey.capture(), claimValue.capture());
 				
-		Assert.assertEquals("scopes", claimKey.getValue());
+		Assert.assertEquals("scope", claimKey.getValue());
 		Assert.assertEquals("ROLE_ADMIN ROLE_USER ROLE_OTHER", claimValue.getValue());
 		
 		

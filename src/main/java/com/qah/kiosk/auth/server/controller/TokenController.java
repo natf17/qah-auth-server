@@ -1,6 +1,5 @@
 package com.qah.kiosk.auth.server.controller;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -25,12 +24,8 @@ public class TokenController {
 	@RequestMapping(path = "/token", method = POST)
 	public ResponseEntity<String> getToken(Authentication auth) {
 		String token = tokenService.getBearerHeaderValueFor(auth);
-		
-		HttpHeaders headers = new HttpHeaders(); 
-		headers.add(HttpHeaders.AUTHORIZATION, token.startsWith("Bearer") ? token : "Bearer " + token);
-		
-		
-		return new ResponseEntity<>(headers, HttpStatus.ACCEPTED);
+
+		return new ResponseEntity<>("{\"token\":\"" + token + "\"}", HttpStatus.ACCEPTED);
 	}
 	
 }
