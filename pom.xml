@@ -51,10 +51,10 @@
   			<artifactId>hsqldb</artifactId>
   			<scope>runtime</scope>
   		</dependency>
-  		<dependecy>
+  		<dependency>
   			<groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>
-  		</dependecy>
+  		</dependency>
 	</dependencies>
 
 	<build>
