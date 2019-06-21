@@ -1,9 +1,8 @@
 package com.qah.kiosk.auth.server.jwt;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import org.assertj.core.util.Arrays;
 
 import com.nimbusds.jose.Payload;
 import com.nimbusds.jwt.JWTClaimsSet;
