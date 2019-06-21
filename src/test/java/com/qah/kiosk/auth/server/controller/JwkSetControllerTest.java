@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,6 +24,9 @@ public class JwkSetControllerTest {
 	
 	@MockBean
 	private QahTokenService tokenService;
+	
+	@MockBean
+	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
 	private MockMvc mockMvc;

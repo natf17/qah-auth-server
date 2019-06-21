@@ -51,6 +51,10 @@
   			<artifactId>hsqldb</artifactId>
   			<scope>runtime</scope>
   		</dependency>
+  		<dependecy>
+  			<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+  		</dependecy>
 	</dependencies>
 
 	<build>

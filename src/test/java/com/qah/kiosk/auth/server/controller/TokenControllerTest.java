@@ -29,7 +29,7 @@ public class TokenControllerTest {
 	private QahTokenService tokenService;
 	
 	@MockBean
-	JdbcTemplate jdbc;
+	private JdbcTemplate jdbc;
 	
 	@Autowired
 	private MockMvc mockMvc;
