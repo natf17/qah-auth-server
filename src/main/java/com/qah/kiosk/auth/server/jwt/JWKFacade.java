@@ -1,7 +1,6 @@
 package com.qah.kiosk.auth.server.jwt;
 
-import java.io.File;
-import java.nio.file.Files;
+import java.io.InputStream;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -10,8 +9,10 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -64,9 +65,11 @@ public class JWKFacade {
 	private PrivateKey getPrivateKey() throws Exception {
 		if(privateKey == null) {
 
-			File file = ResourceUtils.getFile("classpath:crypto/private_key.der");
+			Resource fileResource = new ClassPathResource("crypto/private_key.der");
 			
-			byte[] keyBytes = Files.readAllBytes(file.toPath());
+			InputStream in = fileResource.getInputStream();
+						
+			byte[] keyBytes = IOUtils.toByteArray(in);
 	
 			PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
 			KeyFactory kf = KeyFactory.getInstance("RSA");
@@ -80,9 +83,12 @@ public class JWKFacade {
 	private PublicKey getPublicKey() throws Exception {
 		if(publicKey == null) {
 			
-			File file = ResourceUtils.getFile("classpath:crypto/public_key.der");
+			Resource fileResource = new ClassPathResource("crypto/public_key.der");
 			
-			byte[] keyBytes = Files.readAllBytes(file.toPath());
+			InputStream in = fileResource.getInputStream();
+						
+			byte[] keyBytes = IOUtils.toByteArray(in);
+			
 	
 			X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
 			KeyFactory kf = KeyFactory.getInstance("RSA");
