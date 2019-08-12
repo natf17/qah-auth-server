@@ -10,7 +10,6 @@ import com.qah.kiosk.auth.server.security.KioskUser;
 import com.qah.kiosk.auth.server.security.TokenProperties;
 
 public class JwtClaimsFacade {
-	public final static String AUTHORITIES_CLAIM_NAME = "scopes";
 	
 	private List<JwtClaimProcessor> processors;
 	

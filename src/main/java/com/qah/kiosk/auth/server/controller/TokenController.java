@@ -24,7 +24,6 @@ public class TokenController {
 	@RequestMapping(path = "/token", method = POST)
 	public ResponseEntity<String> getToken(Authentication auth) {
 		String token = tokenService.getBearerHeaderValueFor(auth);
-
 		return new ResponseEntity<>("{\"token\":\"" + token + "\"}", HttpStatus.ACCEPTED);
 	}
 	

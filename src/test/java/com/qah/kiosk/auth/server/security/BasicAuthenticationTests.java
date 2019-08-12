@@ -106,8 +106,7 @@ public class BasicAuthenticationTests {
 		String base64EncodedUsernamePassword = "";
 		mockMvc.perform(post("/token")
 							.accept(MediaType.APPLICATION_JSON)
-							.header(HttpHeaders.AUTHORIZATION, "BASIC " + base64EncodedUsernamePassword)
-							.header("X-Requested-With", "XMLHttpRequest"))
+							.header(HttpHeaders.AUTHORIZATION, "BASIC " + base64EncodedUsernamePassword))
 				.andExpect(status().isUnauthorized()); // via HttpStatusEntryPoint		
 	}
 	
@@ -117,8 +116,7 @@ public class BasicAuthenticationTests {
 		
 		mockMvc.perform(post("/token")
 							.contentType(MediaType.APPLICATION_JSON)
-							.header(HttpHeaders.AUTHORIZATION, "BASIC " + base64EncodedUsernamePassword)
-							.header("X-Requested-With", "XMLHttpRequest"))
+							.header(HttpHeaders.AUTHORIZATION, "BASIC " + base64EncodedUsernamePassword))
 				.andExpect(status().isAccepted());		
 	}
 	

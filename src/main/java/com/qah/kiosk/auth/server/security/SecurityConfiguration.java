@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.httpBasic()
 				.and()
 			.csrf()
-				.ignoringRequestMatchers(request -> "XMLHttpRequest".equals(request.getHeader("X-Requested-With")));
+				.ignoringAntMatchers("/token"); // this POST triggers no side effects
     }
 	
 	@Override

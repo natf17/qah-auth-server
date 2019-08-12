@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>qah.kiosk</groupId>
 	<artifactId>qah-auth-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 	<name>qah-auth-server</name>
 	<description>Authorization Server</description>
 

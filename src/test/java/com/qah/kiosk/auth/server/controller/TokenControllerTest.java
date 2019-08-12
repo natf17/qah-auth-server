@@ -2,7 +2,6 @@ package com.qah.kiosk.auth.server.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -43,7 +42,7 @@ public class TokenControllerTest {
 	@Test
 	@WithMockUser
 	public void whenAuthenticated_tokenEndpoint_returnsToken() throws Exception {
-			mockMvc.perform(post("/token").with(csrf()))
+			mockMvc.perform(post("/token"))
 						.andExpect(status().isAccepted())
 						.andExpect(content().string("{\"token\":\"" + token + "\"}"));
 	}
